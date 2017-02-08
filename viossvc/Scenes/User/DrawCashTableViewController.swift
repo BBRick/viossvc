@@ -68,7 +68,11 @@ class DrawCashTableViewController: BaseTableViewController, UITextFieldDelegate 
         cashNumLabel.text = "\(Double(CurrentUserHelper.shared.userInfo.user_cash_) / 100)"
         //drawCashText
         drawCashText.becomeFirstResponder()
-        
+        let tapGes = UITapGestureRecognizer(target: self, action: #selector(DrawCashTableViewController.cancelEdit))
+        tableView.addGestureRecognizer(tapGes)
+    }
+    func cancelEdit() {
+        drawCashText.resignFirstResponder()
     }
     
     func updateView(drawCash: String) {
